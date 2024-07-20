@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 import uvicorn
 import numpy as np
 from io import BytesIO
@@ -11,7 +12,7 @@ import tensorflow as tf
 
 app = FastAPI()
 
-# Load environment variables from .env file
+
 load_dotenv()
 
 origins = [
@@ -28,6 +29,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 # Retrieve environment variables
 MODEL_PATH = os.getenv('MODEL_PATH')
 CLASS_NAMES = os.getenv('CLASS_NAMES').split(",")
@@ -36,7 +39,7 @@ MODEL = tf.keras.models.load_model(MODEL_PATH)
 
 @app.get("/", response_class=HTMLResponse)
 async def read_index():
-    with open("index.html") as f:
+    with open("templates/index.html") as f:
         return f.read()
 
 def read_file_as_image(data) -> np.ndarray:
