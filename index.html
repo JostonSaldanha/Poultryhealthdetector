@@ -5,288 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poultry Health Detector</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-    <style>
-        /* General styling */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-image: url('https://img.freepik.com/free-photo/photorealistic-scene-poultry-farm-with-people-chickens_23-2151462261.jpg?size=626&ext=jpg');
-            /* background-image: url("image.png"); */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
-
-        .overlay {
-            /* background-color: rgba(255, 255, 255, 0.7); Reduced opacity for more visible background */
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 600px;
-            padding: 30px;
-            background-color: rgba(255, 255, 255, 0.342);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .container:hover {
-            transform: translateY(-5px);
-        }
-
-        h2 {
-            color: #0b0b1a;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        /* Form styling */
-        form {
-            background-color: rgba(255, 255, 255, 0.432);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        input[type="file"] {
-            display: none;
-        }
-
-        label[for="file-input"] {
-            margin-bottom: 15px;
-            padding: 20px;
-            border: 2px dashed #b0bec5;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            width: 100%;
-            max-width: 400px;
-            transition: border-color 0.3s ease;
-            color: #70747e;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        label[for="file-input"].drag-over {
-            border-color: #00796b;
-            color: #00796b;
-        }
-
-        label[for="file-input"] img {
-            max-width: 100%;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        button {
-            background-color: #002a79;
-            color: #fff;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            font-size: 1rem;
-            width: 100%;
-            max-width: 300px;
-            text-transform: uppercase;
-        }
-
-        button:hover {
-            background-color: #004d40;
-        }
-
-        button:active {
-            transform: scale(0.98);
-        }
-
-        /* Result styling */
-        #result {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            display: none; /* Hide initially */
-            opacity: 0; /* Hide initially */
-            transition: opacity 0.3s ease;
-            margin-bottom: 20px;
-        }
-
-        #result.show {
-            display: block; /* Show when result is available */
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        #result h3 {
-            color: #00796b;
-            margin-bottom: 10px;
-        }
-
-        #result p, #result ul {
-            font-size: 1.1em;
-            color: #333;
-            margin-bottom: 5px;
-            text-align: left;
-        }
-
-        #result ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-
-        .action {
-            color: #d32f2f;
-            font-weight: bold;
-        }
-
-        /* Footer styling */
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #00796b;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <section id="home">
+         <div class="nav">
+        <div class="logo">
+            <img src="./assets/hen.png" alt="" srcset="">
+        </div>
+        <div class="nav_links">
+            <a href="#home">Home</a>
+            <a href="#About_sec">About</a>
+        </div>
+        
+    </div>
     <div class="overlay">
-        <div class="container">
-            <h2>Poultry Health Detector</h2>
-            <form id="upload-form" enctype="multipart/form-data">
-                <input type="file" name="file" id="file-input" accept=".jpg, .jpeg, .png" required>
-                <label for="file-input" id="drop-zone">Drag & Drop Image Here</label>
-                <button type="submit">Predict</button>
-            </form>
+        <div class="container1">
             <div id="result">
                 <h3>Prediction:</h3>
                 <p id="class-info"></p>
                 <p id="confidence-info"></p>
                 <div class="action">
                     <p>Recommended Actions:</p>
-                    <ul id="action-info"></ul>
+                    <ul id="action-info">
+                        
+                    </ul>
                 </div>
             </div>
         </div>
+        <div class="container">
+            <h2>Poultry Health Detector</h2>
+            <form id="upload-form" enctype="multipart/form-data">
+                <input type="file" id="file-input" accept=".jpg, .jpeg, .png" required>
+                <label for="file-input" id="drop-zone">Drag & Drop Image Here</label>
+                <button type="submit">Predict</button>
+            </form>
+            
+        </div>
     </div>
+</section>
+    
+    <section id="About_sec">
+        <div class="About">
+            <h1 class="heading">About</h1>
+            <div class="about_body">
+                <div class="text_cont">
+                    <h2>Coccidiosis</h1>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestias fugiat sed delectus unde aperiam sint voluptatum quasi maiores architecto iure! Nisi eveniet voluptatum quod eius sit quidem obcaecati perspiciatis ab!</p>
+                    <h2>Salmonella</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est asperiores distinctio fuga dolor sequi laborum consectetur aspernatur repellat ad veritatis? A odit dolorum vero, nobis iste debitis autem dolor doloremque.</p>
+                </div>
+                <div class="img_cont">
+                        <img src="https://img.freepik.com/free-photo/photorealistic-scene-poultry-farm-with-people-chickens_23-2151462261.jpg?size=626&ext=jp" alt="">
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    
 
     <footer>
         &copy; 2024 Poultry Health Detector
-    </footer>
+    </footer> 
 
-    <script>
-        const form = document.getElementById('upload-form');
-        const fileInput = document.getElementById('file-input');
-        const dropZone = document.getElementById('drop-zone');
-        const resultDiv = document.getElementById('result');
-        const classInfo = document.getElementById('class-info');
-        const confidenceInfo = document.getElementById('confidence-info');
-        const actionInfo = document.getElementById('action-info');
-
-        const actions = {
-            healthy: ["No action needed. Keep monitoring the chickens regularly."],
-            coccidiosis: [
-                "Administer anticoccidial medication immediately.",
-                "Clean and disinfect the coop thoroughly."
-            ],
-            salmonella: [
-                "Isolate the infected chickens.",
-                "Contact a veterinarian for appropriate antibiotics.",
-                "Ensure thorough hygiene to prevent the spread."
-            ]
-        };
-
-        dropZone.addEventListener('dragover', (event) => {
-            event.preventDefault();
-            dropZone.classList.add('drag-over');
-        });
-
-        dropZone.addEventListener('dragleave', () => {
-            dropZone.classList.remove('drag-over');
-        });
-
-        dropZone.addEventListener('drop', (event) => {
-            event.preventDefault();
-            dropZone.classList.remove('drag-over');
-            const files = event.dataTransfer.files;
-            if (files.length) {
-                fileInput.files = files;
-                displayImage(files[0]);
-            }
-        });
-
-        fileInput.addEventListener('change', () => {
-            if (fileInput.files.length) {
-                displayImage(fileInput.files[0]);
-            }
-        });
-
-        function displayImage(file) {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                dropZone.innerHTML = `<img src="${event.target.result}" alt="Uploaded Image">`;
-            };
-            reader.readAsDataURL(file);
-        }
-
-        form.addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            const formData = new FormData();
-            formData.append('file', fileInput.files[0]);
-
-            try {
-                const response = await fetch('http://127.0.0.1:8000/predict', {
-                    method: 'POST',
-                    body: formData,
-                });
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-
-                const result = await response.json();
-                const actionList = actions[result.class.toLowerCase()] || ["No specific action recommended."];
-
-                classInfo.textContent = `Class: ${result.class}`;
-                confidenceInfo.textContent = `Confidence: ${(result.confidence * 100).toFixed(2)}%`; // Display confidence as percentage
-                actionInfo.innerHTML = actionList.map(action => `<li>${action}</li>`).join('');
-
-                resultDiv.classList.add('show'); // Show the result section
-                resultDiv.style.opacity = 1; // Set opacity to 1
-                resultDiv.scrollIntoView({ behavior: 'smooth' }); // Scroll to the result section
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        });
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
