@@ -82,3 +82,21 @@ form.addEventListener('submit', async (event) => {
         console.error('Error:', error);
     }
 });
+
+function sendMail(){
+    let userName = document.getElementById('name').value
+    let email = document.getElementById('email').value
+    let subject= document.getElementById('subject').value
+    let message=document.getElementById('message').value
+    let params ={
+        user_name:userName,
+        user_email:email,
+        user_subject:subject,
+        user_message:message
+    }
+    emailjs.send("service_9da7tni","template_csammlm",params).then(alert('message sent'))
+
+
+
+
+ }

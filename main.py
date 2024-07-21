@@ -12,7 +12,6 @@ import tensorflow as tf
 
 app = FastAPI()
 
-
 load_dotenv()
 
 origins = [

@@ -1,124 +1,125 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
-}
-
-.logo img {
-    height: 40px;
-}
-
-.nav_links a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    padding: 8px 16px;
-    transition: background-color 0.3s;
-}
-
-.nav_links a:hover {
-    background-color: #575757;
-}
-
-.overlay {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#upload-form  {
+    background-color: #e1f1fd;
     padding: 20px;
-}
-
-.container1, .container {
-    background-color: white;
-    padding: 20px;
-    margin: 10px 0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-}
-
-h2, h3 {
-    margin: 0 0 10px;
-}
-
-#upload-form {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#file-input {
+
+#upload-form input[type="file"] {
     display: none;
 }
 
-#drop-zone {
-    display: inline-block;
-    padding: 10px;
-    border: 2px dashed #ccc;
-    cursor: pointer;
+#upload-form label[for="file-input"] {
     margin-bottom: 10px;
-    text-align: center;
-    width: 100%;
-}
-
-button[type="submit"] {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button[type="submit"]:hover {
-    background-color: #575757;
-}
-
-.About_sec {
-    background-color: #fff;
     padding: 20px;
-}
-
-.About {
-    max-width: 800px;
-    margin: auto;
-}
-
-.heading {
+    border: 2px dashed #b0bec5;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    width: 80%;
+    height: 250px;
+    transition: border-color 0.3s ease;
+    color: #70747e;
+    background-color: #fff;
+    cursor: pointer;
     text-align: center;
+}
+
+#upload-form label[for="file-input"].drag-over {
+    border-color: #00796b;
+    color: #00796b;
+}
+
+#upload-form label[for="file-input"] img {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+#upload-form  button {
+    background-color: #002a79;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+    text-transform: uppercase;
+}
+
+#upload-form button:active {
+    transform: scale(0.98);
+}
+
+.Upload {
+    background-color: #e1f1fd;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.Upload:hover {
+    transform: translateY(-5px);
+}
+
+h2 {
+    color: #0b0b1a;
     margin-bottom: 20px;
+    font-weight: 700;
 }
 
-.about_body {
+#result {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    /*display: none; /* Hide initially */
+   
+    /*opacity: 0; /* Hide initially */
+    transition: opacity 0.3s ease;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.text_cont, .img_cont {
-    flex: 1;
-    min-width: 300px;
-    margin: 10px;
+#result.show {
+    /*display: block; /* Show when result is available */
+    animation: fadeIn 0.5s ease;
 }
 
-.text_cont h2 {
-    margin: 10px 0;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.img_cont img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+#result h3 {
+    color: #00796b;
+    margin-bottom: 10px;
 }
 
-/* Mobile view */
+#result p, #result ul {
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+#result ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.action {
+    color: #d32f2f;
+    font-weight: bold;
+}
